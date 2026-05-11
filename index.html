@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-sm btn-outline-dark ms-2" id="adminBtn">Admin</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-5 border-bottom">
+        <div class="container-fluid px-4">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <div class="mb-4">
+                        <img id="profilePhoto" src="images/profile.jpg" alt="Profile" class="profile-img rounded-circle" style="display:none;">
+                        <div id="profilePlaceholder" class="profile-placeholder">📸</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold mb-3">Your Name</h1>
+                    <p class="lead text-muted mb-4">Full Stack Developer | Creative Thinker | Problem Solver</p>
+                    <p class="mb-4">Building beautiful, functional web experiences with modern technologies.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#projects" class="btn btn-dark">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-dark">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-5">
+        <div class="container-fluid px-4">
+            <h2 class="section-title mb-5">Featured Projects</h2>
+            <div id="projectsContainer" class="row g-4">
+                <!-- Projects will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section py-5 bg-light border-top border-bottom">
+        <div class="container-fluid px-4">
+            <h2 class="section-title mb-5">Skills & Technologies</h2>
+            <div id="skillsContainer" class="row g-4">
+                <!-- Skills will be rendered here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container-fluid px-4">
+            <h2 class="section-title mb-5">Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <p class="text-center text-muted mb-5">Feel free to reach out. I'm always interested in hearing about new projects and opportunities.</p>
+                    <div class="contact-links text-center">
+                        <a href="mailto:your.email@example.com" class="contact-link me-4">📧 Email</a>
+                        <a href="https://github.com" target="_blank" class="contact-link me-4">🐙 GitHub</a>
+                        <a href="https://linkedin.com" target="_blank" class="contact-link me-4">💼 LinkedIn</a>
+                        <a href="https://twitter.com" target="_blank" class="contact-link">𝕏 Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light border-top py-4">
+        <div class="container-fluid px-4 text-center text-muted">
+            <p class="mb-0">&copy; 2024 Your Name. All rights reserved. | Built with HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Admin Modal -->
+    <div class="modal fade" id="adminModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Admin Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="adminPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="adminPassword" placeholder="Enter admin password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-dark" id="adminLoginBtn">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Data (Embedded in HTML) -->
+    <script>
+        // All projects data embedded here
+        const projectsData = [
+            {
+                id: 1,
+                name: "HarvestCrop",
+                description: "Agricultural e-commerce platform connecting farmers directly with buyers. Features include product listings, secure payments, and real-time inventory management.",
+                longDescription: "A comprehensive agricultural e-commerce solution built with modern web technologies. HarvestCrop allows farmers to list their products, manage inventory, and connect with buyers across regions. The platform includes a robust admin panel for managing transactions and user accounts.",
+                tags: ["HTML", "CSS", "Bootstrap", "PHP", "MySQL", "PHPMyAdmin"],
+                badge: "Dev",
+                badge2: "UI/UX · DB Design",
+                link: "https://example.com/harvestcrop",
+                images: ["images/harvestcrop-1.png", "images/harvestcrop-2.png", "images/harvestcrop-3.png"]
+            },
+            {
+                id: 2,
+                name: "HerbaScan",
+                description: "AI-powered herbal plant identifier using CNN and mobile technology. Scan plants to identify species, medicinal properties, and uses.",
+                longDescription: "HerbaScan is an innovative mobile application that uses convolutional neural networks (CNN) and TensorFlow Lite to identify herbal plants in real-time. Users can capture plant images and receive instant identification along with medicinal properties and traditional uses. Data is synchronized with a Supabase backend.",
+                tags: ["Flutter", "Dart", "Python", "MobileNetV2", "TFLite", "SQLite", "Supabase", "Railway"],
+                badge: "QA · Testing",
+                badge2: null,
+                link: "https://example.com/herbascan",
+                images: ["images/herbascan-1.png", "images/herbascan-2.png"]
+            }
+        ];
+
+        // Store projects in localStorage if not present (for admin edits)
+        if (!localStorage.getItem('projectsData')) {
+            localStorage.setItem('projectsData', JSON.stringify(projectsData));
+        }
+
+        // Profile data
+        const profileData = {
+            name: "Your Name",
+            title: "Full Stack Developer | Creative Thinker | Problem Solver",
+            bio: "Building beautiful, functional web experiences with modern technologies.",
+            email: "your.email@example.com",
+            github: "https://github.com",
+            linkedin: "https://linkedin.com",
+            twitter: "https://twitter.com"
+        };
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- App JS -->
+    <script src="js/app.js"></script>
+</body>
+</html>
