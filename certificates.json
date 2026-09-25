@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Bachelor of Science in Computer Science",
+    "issuer": "Your University Name",
+    "date": "2026",
+    "category": "degree",
+    "image": "images/diploma.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Certificate Title Here",
+    "issuer": "Issuing Organization",
+    "date": "Month Year",
+    "category": "certification",
+    "image": "images/cert-1.jpg"
+  }
+]
