@@ -2,21 +2,27 @@
   {
     "id": 1,
     "title": "HarvestCrop",
-    "description": "An agricultural e-commerce platform connecting farmers and buyers. I led the UI/UX design, database architecture, and full database development and management, covering schema design, relationships, and query optimization using MySQL and PHPMyAdmin.",
+    "description": "An agricultural e-commerce platform connecting farmers and buyers. I led the UI/UX design, database architecture, and full database development and management — covering schema design, relationships, and query optimization using MySQL and PHPMyAdmin.",
     "tags": ["HTML", "CSS", "Bootstrap", "PHP", "MySQL", "PHPMyAdmin"],
     "badge": "dev",
     "badge2": "UI/UX · DB Design",
-    "link": "",
+    "link": "https://github.com/jlbdc-git/HarvestCrops",
+    "status": "Completed",
+    "type": "Academic",
+    "year": "2025",
     "images": []
   },
   {
     "id": 2,
     "title": "HerbaScan",
-    "description": "A CNN-based mobile application that identifies herbal plants through the camera using a MobileNetV2 model converted to TFLite for on-device inference. I handled quality assurance, writing test cases, performing functional and regression testing and be part of the project's documentation.",
+    "description": "A CNN-based mobile application that identifies herbal plants through the camera using a MobileNetV2 model converted to TFLite for on-device inference. I handled quality assurance — writing test cases, performing functional and regression testing — and produced the project documentation.",
     "tags": ["Flutter", "Dart", "Python", "MobileNetV2", "TFLite", "SQLite", "Supabase", "Railway"],
     "badge": "qa",
     "badge2": "",
-    "link": "",
+    "link": "https://github.com/sXenoXs/RE-HerbaScan",
+    "status": "Completed",
+    "type": "Academic",
+    "year": "2025",
     "images": []
   }
 ]
