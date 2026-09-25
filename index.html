@@ -6,394 +6,186 @@
 <meta name="description" content="Vince Wackie R. Espera — CS Graduate · Data Science · Software Development · QA"/>
 <title>Vince Espera · Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-/* =============================================
-   TOKENS
-   ============================================= */
-:root {
-  --bg:       #f9f8f5;
-  --text:     #111111;
-  --muted:    #888888;
-  --card:     #ffffff;
-  --border:   #e5e3de;
-  --tag-bg:   #f0ede7;
-  --tag-text: #444444;
-  --badge-dev-bg:    #e6fcf5; --badge-dev-fg:    #0b7a56;
-  --badge-ds-bg:     #ede9fe; --badge-ds-fg:     #5b21b6;
-  --badge-qa-bg:     #fff4e6; --badge-qa-fg:     #b85c00;
-  --badge-design-bg: #fce7f3; --badge-design-fg: #9d174d;
-  --mono: 'DM Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
-}
-
-/* =============================================
-   RESET + BASE
-   ============================================= */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-a { color:inherit; text-decoration:none; }
-img { max-width:100%; display:block; }
-
-/* =============================================
-   LAYOUT
-   ============================================= */
-.page { max-width:780px; margin:0 auto; padding:2rem 1.2rem 5rem; }
-@media(min-width:640px){ .page{ padding:3rem 2rem 6rem; } }
-
-/* =============================================
-   NAV
-   ============================================= */
-nav {
-  display:flex; justify-content:space-between; align-items:center;
-  margin-bottom:3.5rem; flex-wrap:wrap; gap:.75rem;
-}
-@media(min-width:640px){ nav{ margin-bottom:5rem; flex-wrap:nowrap; } }
-.nav-name { font-family:var(--mono); font-size:13px; font-weight:500; letter-spacing:.02em; }
-.nav-links { display:flex; gap:1.2rem; flex-wrap:wrap; align-items:center; }
-.nav-links a { font-size:13px; color:var(--muted); transition:color .2s; }
-.nav-links a:hover { color:var(--text); }
-
-/* =============================================
-   HERO
-   ============================================= */
-.hero { margin-bottom:4rem; }
-@media(min-width:640px){ .hero{ margin-bottom:5.5rem; } }
-
-.hero-top { display:flex; gap:1.25rem; align-items:flex-start; margin-bottom:1.25rem; }
-@media(min-width:640px){ .hero-top{ gap:2rem; } }
-
-.avatar {
-  flex-shrink:0; width:76px; height:76px; border-radius:50%;
-  overflow:hidden; border:2px solid var(--border); background:var(--tag-bg);
-  display:flex; align-items:center; justify-content:center;
-}
-@media(min-width:640px){ .avatar{ width:92px; height:92px; } }
-.avatar img { width:100%; height:100%; object-fit:cover; }
-.avatar-placeholder { font-family:var(--mono); font-size:9px; color:var(--muted); text-align:center; line-height:1.5; padding:.25rem; }
-
-.hero-text { flex:1; min-width:0; }
-.hero-eyebrow { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-bottom:.85rem; }
-@media(min-width:640px){ .hero-eyebrow{ font-size:11px; } }
-
-.hero h1 { font-size:clamp(1.7rem,5vw,3rem); font-weight:300; line-height:1.15; letter-spacing:-.02em; margin-bottom:.85rem; }
-.hero h1 em { font-style:normal; font-weight:500; }
-
-.hero-bio { font-size:14px; color:var(--muted); line-height:1.75; max-width:520px; margin-bottom:1.25rem; }
-@media(min-width:640px){ .hero-bio{ font-size:15px; } }
-
-.pills { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-.pill { font-family:var(--mono); font-size:11px; color:var(--muted); padding:.3rem .8rem; border:1px solid var(--border); border-radius:20px; }
-
-.cta-row { display:flex; gap:.75rem; flex-wrap:wrap; }
-.btn {
-  display:inline-flex; align-items:center; gap:.35rem;
-  padding:.6rem 1.1rem; border-radius:7px; font-family:var(--sans);
-  font-size:13px; font-weight:500; border:1px solid var(--border);
-  cursor:pointer; transition:background .15s, color .15s;
-  background:transparent; color:var(--text);
-}
-.btn:hover { background:var(--tag-bg); }
-.btn-primary { background:var(--text); color:#fff; border-color:var(--text); }
-.btn-primary:hover { background:#333; }
-
-/* =============================================
-   SECTION
-   ============================================= */
-.section { margin-bottom:4rem; }
-@media(min-width:640px){ .section{ margin-bottom:5rem; } }
-.section-label {
-  font-family:var(--mono); font-size:10px; color:var(--muted);
-  letter-spacing:.1em; text-transform:uppercase;
-  display:flex; align-items:center; gap:.65rem; margin-bottom:1.5rem;
-}
-.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
-
-/* =============================================
-   PROJECT CARDS
-   ============================================= */
-.project-list { border:1px solid var(--border); border-radius:10px; overflow:hidden; background:var(--card); }
-
-/* loading / error states */
-.list-state {
-  padding:2.5rem;
-  text-align:center;
-  font-family:var(--mono);
-  font-size:12px;
-  color:var(--muted);
-}
-.list-state.error { color:#c0392b; }
-
-.project-card {
-  display:block; padding:1.25rem;
-  border-bottom:1px solid var(--border);
-  cursor:pointer; transition:background .15s; color:inherit;
-}
-.project-card:last-child { border-bottom:none; }
-.project-card:hover { background:#faf9f6; }
-
-.card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:.75rem; margin-bottom:.6rem; }
-.card-title { font-size:14px; font-weight:500; line-height:1.35; }
-@media(min-width:640px){ .card-title{ font-size:15px; } }
-
-.badge-group { display:flex; flex-direction:column; gap:.3rem; align-items:flex-end; flex-shrink:0; }
-.badge { font-family:var(--mono); font-size:10px; padding:.2rem .5rem; border-radius:4px; white-space:nowrap; }
-.badge-dev    { background:var(--badge-dev-bg);    color:var(--badge-dev-fg); }
-.badge-ds     { background:var(--badge-ds-bg);     color:var(--badge-ds-fg); }
-.badge-qa     { background:var(--badge-qa-bg);     color:var(--badge-qa-fg); }
-.badge-design { background:var(--badge-design-bg); color:var(--badge-design-fg); }
-
-.card-desc {
-  font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:.75rem;
-  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
-}
-@media(min-width:640px){ .card-desc{ font-size:14px; } }
-
-.tag-row { display:flex; gap:.35rem; flex-wrap:wrap; margin-bottom:.5rem; }
-.tag { font-family:var(--mono); font-size:10px; background:var(--tag-bg); color:var(--tag-text); padding:.2rem .5rem; border-radius:4px; }
-.card-hint { font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:.4rem; }
-
-/* =============================================
-   PROJECT DETAIL OVERLAY
-   ============================================= */
-.detail-overlay {
-  display:none; position:fixed; inset:0;
-  background:var(--bg); z-index:200;
-  overflow-y:auto; -webkit-overflow-scrolling:touch;
-}
-.detail-overlay.open { display:block; }
-
-.detail-inner { max-width:780px; margin:0 auto; padding:1.25rem 1.2rem 5rem; }
-@media(min-width:640px){ .detail-inner{ padding:2.5rem 2rem 6rem; } }
-
-.detail-back {
-  display:inline-flex; align-items:center; gap:.4rem;
-  font-family:var(--mono); font-size:12px; color:var(--muted);
-  margin-bottom:1.5rem; cursor:pointer; background:none; border:none; padding:0; transition:color .2s;
-}
-.detail-back:hover { color:var(--text); }
-
-.detail-title { font-size:clamp(1.5rem,4vw,2.2rem); font-weight:300; letter-spacing:-.02em; margin-bottom:1.25rem; }
-
-/* Carousel */
-.carousel-wrap {
-  position:relative; border-radius:10px; overflow:hidden;
-  background:var(--tag-bg); margin-bottom:.75rem;
-  width:100%; aspect-ratio:16/9; max-height:380px;
-}
-.carousel-track { display:flex; height:100%; transition:transform .35s ease; }
-.carousel-slide { flex-shrink:0; width:100%; height:100%; }
-.carousel-slide img { width:100%; height:100%; object-fit:cover; cursor:zoom-in; }
-.carousel-empty {
-  width:100%; height:100%; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:.5rem;
-}
-.carousel-empty svg { opacity:.25; }
-.carousel-empty p { font-family:var(--mono); font-size:11px; color:var(--muted); }
-
-.carousel-btn {
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(255,255,255,.88); border:1px solid var(--border);
-  border-radius:50%; width:34px; height:34px;
-  display:flex; align-items:center; justify-content:center;
-  cursor:pointer; font-size:16px; color:var(--text); z-index:2; transition:background .15s; line-height:1;
-}
-.carousel-btn:hover { background:#fff; }
-.carousel-btn.prev { left:10px; }
-.carousel-btn.next { right:10px; }
-
-.carousel-dots { display:flex; justify-content:center; gap:.4rem; margin-bottom:.75rem; flex-wrap:wrap; }
-.dot { width:6px; height:6px; border-radius:50%; background:var(--border); border:none; padding:0; cursor:pointer; transition:background .2s, transform .2s; }
-.dot.active { background:var(--text); transform:scale(1.4); }
-.carousel-hint { font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:1.5rem; display:none; }
-
-.detail-badges { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1rem; }
-
-.detail-desc { font-size:14px; color:var(--muted); line-height:1.8; margin-bottom:1.5rem; }
-@media(min-width:640px){ .detail-desc{ font-size:15px; } }
-
-.detail-divider { height:1px; background:var(--border); margin-bottom:1.25rem; }
-.detail-stack-label { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.08em; margin-bottom:.65rem; }
-.detail-tags { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1.75rem; }
-
-.detail-link {
-  display:inline-flex; align-items:center; gap:.4rem;
-  padding:.65rem 1.25rem; border-radius:7px; border:1px solid var(--border);
-  font-size:13px; font-weight:500; color:var(--text); transition:background .15s;
-}
-.detail-link:hover { background:var(--tag-bg); }
-
-/* Fullscreen viewer */
-.fullscreen-overlay {
-  display:none; position:fixed; inset:0;
-  background:rgba(0,0,0,.93); z-index:300;
-  align-items:center; justify-content:center;
-}
-.fullscreen-overlay.open { display:flex; }
-.fullscreen-overlay img { max-width:95vw; max-height:90vh; object-fit:contain; border-radius:4px; }
-.fullscreen-close { position:absolute; top:1rem; right:1.25rem; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; opacity:.7; line-height:1; }
-.fullscreen-close:hover { opacity:1; }
-
-/* =============================================
-   SKILLS
-   ============================================= */
-.skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:.85rem; }
-@media(min-width:480px){ .skills-grid{ grid-template-columns:repeat(4,1fr); } }
-.skill-group { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:1rem; }
-.skill-group-title { font-family:var(--mono); font-size:10px; color:var(--muted); margin-bottom:.7rem; letter-spacing:.03em; }
-.skill-list { display:flex; flex-direction:column; gap:.3rem; }
-.skill-list span { font-size:12px; color:var(--text); }
-@media(min-width:640px){ .skill-list span{ font-size:13px; } }
-
-/* =============================================
-   CONTACT
-   ============================================= */
-.contact-card { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
-.contact-row {
-  display:flex; align-items:center; gap:.85rem; padding:1rem 1.25rem;
-  border-bottom:1px solid var(--border); transition:background .15s; color:inherit;
-}
-.contact-row:last-child { border-bottom:none; }
-.contact-row:hover { background:#faf9f6; }
-.contact-icon { width:34px; height:34px; border-radius:8px; background:var(--tag-bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.contact-icon svg { width:15px; height:15px; stroke:var(--muted); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
-.contact-info-label { font-size:11px; color:var(--muted); margin-bottom:1px; }
-.contact-info-val { font-size:13px; font-weight:500; word-break:break-all; }
-@media(min-width:480px){ .contact-info-val{ word-break:normal; } }
-.contact-arrow { margin-left:auto; color:var(--muted); font-size:12px; flex-shrink:0; }
-
-/* =============================================
-   FOOTER
-   ============================================= */
-footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.4rem; font-family:var(--mono); font-size:11px; color:var(--muted); }
-</style>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <div class="page">
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-name">vince.dev</div>
-    <div class="nav-links">
-      <a href="#projects">work</a>
-      <a href="#skills">skills</a>
-      <a href="#contact">contact</a>
-    </div>
-  </nav>
+  <div class="main-split">
 
-  <!-- HERO -->
-  <section class="hero" id="about">
-    <div class="hero-top">
-      <!--
-        ✏️ PROFILE PHOTO:
-        1. Upload your photo to the images/ folder in GitHub, name it profile.jpg
-        2. Replace the <div class="avatar">...</div> below with:
-           <div class="avatar"><img src="images/profile.jpg" alt="Vince Espera"/></div>
-      -->
+    <div class="hero-left">
       <div class="avatar">
         <img src="images/Profile.jpg" alt="Vince Espera"/>
       </div>
-      <div class="hero-text">
-        <p class="hero-eyebrow">CS Graduate &middot; Open to Work &middot; Philippines</p>
-        <h1>Data, insights,<br>and <em>quality</em> &mdash;<br>all three.</h1>
+      <p class="hero-eyebrow">CS Graduate &middot; Open to Work &middot; Philippines</p>
+      <h1 class="hero-name">Vince Wackie R. Espera</h1>
+      <p class="hero-headline">Fresh grad, ready to build, test, and ship.</p>
+      <p class="hero-bio">
+        Computer Science graduate passionate about data science,
+        software development, and quality assurance. I enjoy turning
+        raw data into meaningful insights and building software that
+        is reliable and thoroughly tested.
+      </p>
+      <div class="pills">
+        <span class="pill">Data Science</span>
+        <span class="pill">Software Dev</span>
+        <span class="pill">QA &amp; Testing</span>
+      </div>
+
+      <p class="hero-looking">
+        Open to roles in <strong>data analytics</strong>, <strong>database management</strong>,
+        <strong>data engineering</strong>, <strong>software development</strong>, or <strong>QA</strong>
+        — anything that involves working with data or building reliable systems.
+      </p>
+
+      <div class="hero-languages">
+        <span class="lang-label">Languages</span>
+        <span class="lang-tag">Filipino</span>
+        <span class="lang-tag">English</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:vince.esperadb@gmail.com">Get in touch</a>
+        <a class="btn" href="resume.pdf" target="_blank" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
       </div>
     </div>
-    <p class="hero-bio">
-      I'm Vince Wackie R. Espera, a Computer Science graduate passionate about
-      data science, software development, and quality assurance. I enjoy turning
-      raw data into meaningful insights and building software that is reliable
-      and thoroughly tested.
-    </p>
-    <div class="pills">
-      <span class="pill">Data Science</span>
-      <span class="pill">Software Development</span>
-      <span class="pill">QA &amp; Testing</span>
+
+    <div id="projects">
+      <div class="section-label">Projects</div>
+      <div class="projects-scroll" id="project-list">
+        <div class="list-state">Loading projects&hellip;</div>
+      </div>
     </div>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:vinceespera@gmail.com">Get in touch</a>
-      <a class="btn" href="#projects">See my work</a>
+
+  </div>
+
+
+  <section class="section" id="education">
+    <div class="section-label">Education</div>
+    <div class="edu-card">
+      <div class="edu-main">
+        <div class="edu-degree">Bachelor of Science in Computer Science</div>
+        <div class="edu-school">Lyceum of the Philippines University – Cavite</div>
+        <div class="edu-location">General Trias, Cavite, Philippines</div>
+      </div>
+      <div class="edu-year">2026</div>
     </div>
   </section>
 
-  <!-- PROJECTS — rendered from projects.json -->
-  <section class="section" id="projects">
-    <div class="section-label">Projects</div>
-    <div class="project-list" id="project-list">
-      <div class="list-state">Loading projects&hellip;</div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
   <section class="section" id="skills">
     <div class="section-label">Skills</div>
     <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Data Science</div>
-        <div class="skill-list">
-          <span>Python</span><span>pandas / NumPy</span>
-          <span>scikit-learn</span><span>Matplotlib / Seaborn</span><span>SQL</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Development</div>
-        <div class="skill-list">
-          <span>HTML / CSS</span><span>Bootstrap</span>
-          <span>PHP</span><span>JavaScript</span><span>Flutter / Dart</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">QA &amp; Testing</div>
-        <div class="skill-list">
-          <span>Test case writing</span><span>Functional testing</span>
-          <span>Regression testing</span><span>Bug tracking</span><span>Documentation</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Tools &amp; DB</div>
-        <div class="skill-list">
-          <span>MySQL / PHPMyAdmin</span><span>SQLite / Supabase</span>
-          <span>Git / GitHub</span><span>Figma</span><span>Jupyter Notebook</span>
-        </div>
 
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon ds">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <div class="skill-card-title">Data Science</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot"></span>Python</div>
+          <div class="skill-item"><span class="skill-dot"></span>pandas / NumPy</div>
+          <div class="skill-item"><span class="skill-dot"></span>scikit-learn</div>
+          <div class="skill-item"><span class="skill-dot"></span>Matplotlib / Seaborn</div>
+          <div class="skill-item"><span class="skill-dot"></span>SQL</div>
+        </div>
       </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon dev">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div class="skill-card-title">Development</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot"></span>HTML / CSS</div>
+          <div class="skill-item"><span class="skill-dot"></span>Bootstrap</div>
+          <div class="skill-item"><span class="skill-dot"></span>PHP</div>
+          <div class="skill-item"><span class="skill-dot"></span>JavaScript</div>
+          <div class="skill-item"><span class="skill-dot"></span>Flutter / Dart</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon qa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="skill-card-title">QA &amp; Testing</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot"></span>Test case writing</div>
+          <div class="skill-item"><span class="skill-dot"></span>Functional testing</div>
+          <div class="skill-item"><span class="skill-dot"></span>Regression testing</div>
+          <div class="skill-item"><span class="skill-dot"></span>Bug tracking</div>
+          <div class="skill-item"><span class="skill-dot"></span>Documentation</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <div class="skill-icon tools">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <div class="skill-card-title">Tools &amp; DB</div>
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot"></span>MySQL / PHPMyAdmin</div>
+          <div class="skill-item"><span class="skill-dot"></span>SQLite / Supabase</div>
+          <div class="skill-item"><span class="skill-dot"></span>Git / GitHub</div>
+          <div class="skill-item"><span class="skill-dot"></span>Figma</div>
+          <div class="skill-item"><span class="skill-dot"></span>Jupyter Notebook</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <section class="section" id="certificates">
+    <div class="section-label">Certificates &amp; Credentials</div>
+    <div class="cert-grid" id="cert-list">
+      <div class="list-state">Loading certificates&hellip;</div>
+    </div>
+  </section>
+
   <section class="section" id="contact">
     <div class="section-label">Let's talk</div>
     <div class="contact-card">
 
-      <a class="contact-row" href="mailto:vinceespera@gmail.com">
-        <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 9 10-9"/></svg></div>
-        <div><div class="contact-info-label">Email</div><div class="contact-info-val">vinceespera@gmail.com</div></div>
-        <span class="contact-arrow">›</span>
-      </a>
-
       <a class="contact-row" href="mailto:vince.esperadb@gmail.com">
         <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 9 10-9"/></svg></div>
-        <div><div class="contact-info-label">Email (alt)</div><div class="contact-info-val">vince.esperadb@gmail.com</div></div>
-        <span class="contact-arrow">›</span>
+        <div><div class="c-label">Email (Professional)</div><div class="c-val">vince.esperadb@gmail.com</div></div>
+        <span class="c-arrow">›</span>
+      </a>
+
+      <a class="contact-row" href="mailto:vinceespera@gmail.com">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 9 10-9"/></svg></div>
+        <div><div class="c-label">Email (Personal)</div><div class="c-val">vinceespera@gmail.com</div></div>
+        <span class="c-arrow">›</span>
       </a>
 
       <a class="contact-row" href="https://github.com/FerLinne" target="_blank" rel="noopener">
         <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-        <div><div class="contact-info-label">GitHub</div><div class="contact-info-val">github.com/FerLinne</div></div>
-        <span class="contact-arrow">›</span>
+        <div><div class="c-label">GitHub</div><div class="c-val">github.com/FerLinne</div></div>
+        <span class="c-arrow">›</span>
       </a>
 
       <a class="contact-row" href="https://www.linkedin.com/in/vince-wackie-espera-24503b363/" target="_blank" rel="noopener">
         <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-        <div><div class="contact-info-label">LinkedIn</div><div class="contact-info-val">Vince Wackie Espera</div></div>
-        <span class="contact-arrow">›</span>
+        <div><div class="c-label">LinkedIn</div><div class="c-val">Vince Wackie Espera</div></div>
+        <span class="c-arrow">›</span>
       </a>
 
     </div>
@@ -404,21 +196,22 @@ footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border)
     <span>2026</span>
   </footer>
 
-</div><!-- /.page -->
+</div>
 
-<!-- PROJECT DETAIL OVERLAY -->
+
 <div class="detail-overlay" id="detail-overlay">
   <div class="detail-inner">
     <button class="detail-back" id="detail-back">← back to projects</button>
     <h2 class="detail-title" id="detail-title"></h2>
-    <div class="carousel-wrap" id="carousel-wrap">
+    <div class="carousel-wrap">
       <div class="carousel-track" id="carousel-track"></div>
-      <button class="carousel-btn prev" id="carousel-prev">&#8249;</button>
-      <button class="carousel-btn next" id="carousel-next">&#8250;</button>
+      <button class="cbtn prev" id="cprev">&#8249;</button>
+      <button class="cbtn next" id="cnext">&#8250;</button>
     </div>
     <div class="carousel-dots" id="carousel-dots"></div>
     <p class="carousel-hint" id="carousel-hint">tap image to view fullscreen</p>
     <div class="detail-badges" id="detail-badges"></div>
+    <div id="detail-status"></div>
     <p class="detail-desc" id="detail-desc"></p>
     <div class="detail-divider"></div>
     <div class="detail-stack-label">TECH STACK</div>
@@ -427,110 +220,97 @@ footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border)
   </div>
 </div>
 
-<!-- FULLSCREEN VIEWER -->
-<div class="fullscreen-overlay" id="fullscreen-overlay">
-  <button class="fullscreen-close" id="fullscreen-close">&#10005;</button>
-  <img id="fullscreen-img" src="" alt=""/>
+
+<div class="fullscreen-overlay" id="fs-overlay">
+  <button class="fs-close" id="fs-close">&#10005;</button>
+  <img id="fs-img" src="" alt=""/>
 </div>
 
+
 <script>
-/* =============================================
-   BADGE CONFIG
-   ============================================= */
 const BADGE = {
-  dev:    { label:'Dev',            cls:'badge-dev'    },
-  ds:     { label:'Data Science',   cls:'badge-ds'     },
-  qa:     { label:'QA · Testing',   cls:'badge-qa'     },
-  design: { label:'UI/UX · Design', cls:'badge-design' },
+  dev:    { label: 'Dev',            cls: 'badge-dev'    },
+  ds:     { label: 'Data Science',   cls: 'badge-ds'     },
+  qa:     { label: 'QA · Testing',   cls: 'badge-qa'     },
+  design: { label: 'UI/UX · Design', cls: 'badge-design' },
 };
 
-/* =============================================
-   RENDER PROJECT CARDS from projects.json
-   ============================================= */
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 async function loadProjects() {
   const list = document.getElementById('project-list');
   try {
     const res = await fetch('projects.json');
     if (!res.ok) throw new Error('Could not load projects.json');
     const projects = await res.json();
-
     if (!projects.length) {
       list.innerHTML = '<div class="list-state">No projects yet.</div>';
       return;
     }
-
     list.innerHTML = projects.map(p => {
-      const b = BADGE[p.badge] || BADGE.dev;
-      const badge2Html = p.badge2
-        ? `<span class="badge badge-design">${p.badge2}</span>` : '';
-      const tagsHtml = p.tags
-        .map(t => `<span class="tag">${t}</span>`).join('');
-      const hasImages = p.images && p.images.length > 0;
-      const hint = hasImages
-        ? `<p class="card-hint">${p.images.length} image${p.images.length>1?'s':''} · tap to view →</p>`
+      const b   = BADGE[p.badge] || BADGE.dev;
+      const b2  = p.badge2 ? `<span class="badge badge-design">${esc(p.badge2)}</span>` : '';
+      const imgs = p.images && p.images.length > 0;
+      const hint = imgs
+        ? `<p class="card-hint">${p.images.length} image${p.images.length > 1 ? 's' : ''} · tap to view →</p>`
         : `<p class="card-hint">tap to view details →</p>`;
-
+      const statusTag = (p.status && p.year)
+        ? `<span class="project-status">${esc(p.status)} · ${esc(p.type || 'Project')} · ${esc(p.year)}</span>`
+        : '';
       return `
         <a class="project-card" href="#"
-           data-title="${esc(p.title)}"
-           data-desc="${esc(p.description)}"
-           data-tags="${esc(p.tags.join(','))}"
-           data-badge="${esc(p.badge)}"
-           data-badge2="${esc(p.badge2||'')}"
-           data-link="${esc(p.link||'')}"
-           data-images="${esc((p.images||[]).join(','))}">
+          data-title="${esc(p.title)}"
+          data-desc="${esc(p.description)}"
+          data-tags="${esc(p.tags.join(','))}"
+          data-badge="${esc(p.badge)}"
+          data-badge2="${esc(p.badge2 || '')}"
+          data-link="${esc(p.link || '')}"
+          data-status="${esc(p.status || '')}"
+          data-type="${esc(p.type || '')}"
+          data-year="${esc(p.year || '')}"
+          data-images="${esc((p.images || []).join(','))}">
           <div class="card-top">
             <div class="card-title">${esc(p.title)}</div>
             <div class="badge-group">
               <span class="badge ${b.cls}">${b.label}</span>
-              ${badge2Html}
+              ${b2}
             </div>
           </div>
           <p class="card-desc">${esc(p.description)}</p>
-          <div class="tag-row">${tagsHtml}</div>
+          <div class="tag-row">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+          ${statusTag}
           ${hint}
         </a>`;
     }).join('');
-
-    // Wire up click events after rendering
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', e => { e.preventDefault(); openDetail(card); });
-    });
-
+    document.querySelectorAll('.project-card').forEach(c =>
+      c.addEventListener('click', e => { e.preventDefault(); openDetail(c); })
+    );
   } catch (err) {
-    list.innerHTML = `<div class="list-state error">
-      Could not load projects. Make sure projects.json is in the same folder.<br/>
-      <small>${err.message}</small>
-    </div>`;
+    list.innerHTML = `<div class="list-state error">Could not load projects.<br/><small>${err.message}</small></div>`;
   }
 }
 
-function esc(s) {
-  return String(s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
 
-/* =============================================
-   CAROUSEL
-   ============================================= */
 let _imgs = [], _cur = 0;
 
 function buildCarousel(images) {
   _imgs = images; _cur = 0;
   const track = document.getElementById('carousel-track');
   const dots  = document.getElementById('carousel-dots');
-  const prev  = document.getElementById('carousel-prev');
-  const next  = document.getElementById('carousel-next');
+  const prev  = document.getElementById('cprev');
+  const next  = document.getElementById('cnext');
   const hint  = document.getElementById('carousel-hint');
-
   track.innerHTML = dots.innerHTML = '';
 
   if (!images.length) {
     track.innerHTML = `
       <div class="carousel-slide">
         <div class="carousel-empty">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.2">
             <rect x="3" y="3" width="18" height="18" rx="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <polyline points="21 15 16 10 5 21"/>
@@ -547,13 +327,13 @@ function buildCarousel(images) {
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
     const img = document.createElement('img');
-    img.src = src; img.alt = 'Project image ' + (i+1); img.loading = 'lazy';
-    img.addEventListener('click', () => openFull(src));
+    img.src = src; img.alt = 'Image ' + (i + 1); img.loading = 'lazy';
+    img.addEventListener('click', () => openFs(src));
     slide.appendChild(img);
     track.appendChild(slide);
 
     const dot = document.createElement('button');
-    dot.className = 'dot' + (i===0?' active':'');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
     dot.addEventListener('click', () => goTo(i));
     dots.appendChild(dot);
   });
@@ -564,38 +344,38 @@ function buildCarousel(images) {
 }
 
 function goTo(i) {
-  _cur = Math.max(0, Math.min(i, _imgs.length-1));
-  document.getElementById('carousel-track').style.transform = `translateX(-${_cur*100}%)`;
-  document.querySelectorAll('.dot').forEach((d,j) => d.classList.toggle('active', j===_cur));
+  _cur = Math.max(0, Math.min(i, _imgs.length - 1));
+  document.getElementById('carousel-track').style.transform = `translateX(-${_cur * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('active', j === _cur));
 }
 
-document.getElementById('carousel-prev').addEventListener('click', () => goTo(_cur-1));
-document.getElementById('carousel-next').addEventListener('click', () => goTo(_cur+1));
+document.getElementById('cprev').addEventListener('click', () => goTo(_cur - 1));
+document.getElementById('cnext').addEventListener('click', () => goTo(_cur + 1));
 
-/* =============================================
-   FULLSCREEN
-   ============================================= */
-function openFull(src) {
-  document.getElementById('fullscreen-img').src = src;
-  document.getElementById('fullscreen-overlay').classList.add('open');
-}
-function closeFull() {
-  document.getElementById('fullscreen-overlay').classList.remove('open');
-}
-document.getElementById('fullscreen-close').addEventListener('click', closeFull);
-document.getElementById('fullscreen-overlay').addEventListener('click', function(e){ if(e.target===this) closeFull(); });
 
-/* =============================================
-   DETAIL OVERLAY
-   ============================================= */
+function openFs(src) {
+  document.getElementById('fs-img').src = src;
+  document.getElementById('fs-overlay').classList.add('open');
+}
+
+function closeFs() {
+  document.getElementById('fs-overlay').classList.remove('open');
+}
+
+document.getElementById('fs-close').addEventListener('click', closeFs);
+document.getElementById('fs-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeFs();
+});
+
+
 function openDetail(card) {
   const title  = card.dataset.title  || '';
   const desc   = card.dataset.desc   || '';
-  const tags   = (card.dataset.tags  || '').split(',').map(t=>t.trim()).filter(Boolean);
+  const tags   = (card.dataset.tags  || '').split(',').map(t => t.trim()).filter(Boolean);
   const badge  = card.dataset.badge  || 'dev';
   const badge2 = card.dataset.badge2 || '';
   const link   = card.dataset.link   || '';
-  const images = (card.dataset.images|| '').split(',').map(s=>s.trim()).filter(Boolean);
+  const images = (card.dataset.images || '').split(',').map(s => s.trim()).filter(Boolean);
 
   document.getElementById('detail-title').textContent = title;
   document.getElementById('detail-desc').textContent  = desc;
@@ -606,56 +386,143 @@ function openDetail(card) {
     (badge2 ? ` <span class="badge badge-design">${badge2}</span>` : '');
 
   document.getElementById('detail-tags').innerHTML =
-    tags.map(t=>`<span class="tag">${t}</span>`).join('');
+    tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+  const status  = card.dataset.status || '';
+  const type    = card.dataset.type   || '';
+  const year    = card.dataset.year   || '';
+  const statusHtml = (status && year)
+    ? `<span class="project-status" style="display:inline-block;margin-bottom:1rem">${status} · ${type} · ${year}</span>`
+    : '';
+  document.getElementById('detail-status').innerHTML = statusHtml;
 
   document.getElementById('detail-link-wrap').innerHTML = link
     ? `<a class="detail-link" href="${link}" target="_blank" rel="noopener">↗ View Project</a>` : '';
 
   buildCarousel(images);
 
-  const overlay = document.getElementById('detail-overlay');
-  overlay.classList.add('open');
-  overlay.scrollTop = 0;
+  const o = document.getElementById('detail-overlay');
+  o.classList.add('open');
+  o.scrollTop = 0;
   document.body.style.overflow = 'hidden';
 }
 
 function closeDetail() {
   document.getElementById('detail-overlay').classList.remove('open');
-  document.getElementById('fullscreen-overlay').classList.remove('open');
+  document.getElementById('fs-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
 
 document.getElementById('detail-back').addEventListener('click', closeDetail);
 
-/* keyboard */
 document.addEventListener('keydown', e => {
-  if(e.key==='Escape') {
-    if(document.getElementById('fullscreen-overlay').classList.contains('open')) closeFull();
+  if (e.key === 'Escape') {
+    if (document.getElementById('fs-overlay').classList.contains('open')) closeFs();
+    else if (document.getElementById('cert-overlay').classList.contains('open')) closeCert();
     else closeDetail();
   }
-  if(document.getElementById('detail-overlay').classList.contains('open')) {
-    if(e.key==='ArrowLeft')  goTo(_cur-1);
-    if(e.key==='ArrowRight') goTo(_cur+1);
+  if (document.getElementById('detail-overlay').classList.contains('open')) {
+    if (e.key === 'ArrowLeft')  goTo(_cur - 1);
+    if (e.key === 'ArrowRight') goTo(_cur + 1);
   }
 });
 
-/* swipe */
-(function(){
+(function () {
   let sx = null;
-  const wrap = document.getElementById('carousel-wrap');
-  wrap.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; },{passive:true});
-  wrap.addEventListener('touchend',   e=>{
-    if(sx===null) return;
+  const w = document.querySelector('.carousel-wrap');
+  if (!w) return;
+  w.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  w.addEventListener('touchend',   e => {
+    if (sx === null) return;
     const dx = e.changedTouches[0].clientX - sx;
-    if(Math.abs(dx)>40) dx<0 ? goTo(_cur+1) : goTo(_cur-1);
-    sx=null;
-  },{passive:true});
+    if (Math.abs(dx) > 40) dx < 0 ? goTo(_cur + 1) : goTo(_cur - 1);
+    sx = null;
+  }, { passive: true });
 })();
 
-/* =============================================
-   INIT
-   ============================================= */
 loadProjects();
+
+async function loadCertificates() {
+  const list = document.getElementById('cert-list');
+  try {
+    const res = await fetch('certificates.json');
+    if (!res.ok) throw new Error('Could not load certificates.json');
+    const certs = await res.json();
+    if (!certs.length) {
+      list.innerHTML = '<div class="list-state">No certificates yet.</div>';
+      return;
+    }
+    list.innerHTML = certs.map(c => `
+      <a class="cert-card" href="#"
+        data-title="${esc(c.title)}"
+        data-issuer="${esc(c.issuer)}"
+        data-date="${esc(c.date)}"
+        data-category="${esc(c.category || '')}"
+        data-image="${esc(c.image || '')}">
+        <div class="cert-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <div class="cert-card-title">${esc(c.title)}</div>
+          <div class="cert-card-issuer">${esc(c.issuer)}</div>
+          <div class="cert-card-date">${esc(c.date)}</div>
+        </div>
+        <span class="c-arrow">›</span>
+      </a>`).join('');
+    document.querySelectorAll('.cert-card').forEach(c =>
+      c.addEventListener('click', e => { e.preventDefault(); openCert(c); })
+    );
+  } catch (err) {
+    list.innerHTML = `<div class="list-state error">Could not load certificates.<br/><small>${err.message}</small></div>`;
+  }
+}
+
+function openCert(card) {
+  const title    = card.dataset.title    || '';
+  const issuer   = card.dataset.issuer   || '';
+  const date     = card.dataset.date     || '';
+  const image    = card.dataset.image    || '';
+
+  document.getElementById('cert-title').textContent = title;
+
+  const imgWrap = document.getElementById('cert-img-wrap');
+  imgWrap.innerHTML = image
+    ? `<img src="${image}" alt="${esc(title)}" style="width:100%;border-radius:10px;border:1px solid var(--border);cursor:zoom-in;" onclick="openFs('${image}')"/>`
+    : `<div style="height:180px;background:var(--tag-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--muted)">no image yet</div>`;
+
+  document.getElementById('cert-meta').innerHTML = `
+    <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:.5rem">
+      <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Issued by</strong> &nbsp;${esc(issuer)}</div>
+      <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Date</strong> &nbsp;${esc(date)}</div>
+    </div>`;
+
+  const o = document.getElementById('cert-overlay');
+  o.classList.add('open');
+  o.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCert() {
+  document.getElementById('cert-overlay').classList.remove('open');
+  document.getElementById('fs-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('cert-back').addEventListener('click', closeCert);
+
+loadCertificates();
 </script>
+
+
+<div class="cert-overlay" id="cert-overlay">
+  <div class="detail-inner">
+    <button class="detail-back" id="cert-back">← back to certificates</button>
+    <h2 class="detail-title" id="cert-title"></h2>
+    <div class="cert-img-wrap" id="cert-img-wrap"></div>
+    <div class="cert-meta" id="cert-meta"></div>
+  </div>
+</div>
 </body>
 </html>
