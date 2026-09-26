@@ -10,7 +10,15 @@
     "status": "Completed",
     "type": "Academic",
     "year": "2025",
-    "images": []
+    "images": [
+      "images/Projects/Harvestcrops/Admin.png",
+      "images/Projects/Harvestcrops/Cart.png",
+      "images/Projects/Harvestcrops/Harvestcrops_Schema.png",
+      "images/Projects/Harvestcrops/Inventory.png",
+      "images/Projects/Harvestcrops/My_Account.png",
+      "images/Projects/Harvestcrops/Vendee.png",
+      "images/Projects/Harvestcrops/Vendor.png"
+    ]
   },
   {
     "id": 2,
@@ -23,6 +31,13 @@
     "status": "Completed",
     "type": "Academic",
     "year": "2025",
-    "images": []
+    "images": [
+      "images/Projects/HerbaScan/Start_Screen.png",
+      "images/Projects/HerbaScan/Home_Screen.png",
+      "images/Projects/HerbaScan/Browse_Screen.png",
+      "images/Projects/HerbaScan/Identified_Herb.png",
+      "images/Projects/HerbaScan/LowConfidence_Screen.png",
+      "images/Projects/HerbaScan/UnIdentified_Herb.png"
+    ]
   }
 ]
