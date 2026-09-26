@@ -2,17 +2,33 @@
   {
     "id": 1,
     "title": "Bachelor of Science in Computer Science",
-    "issuer": "Your University Name",
+    "issuer": "Lyceum of the Philippines University – Cavite",
     "date": "2026",
     "category": "degree",
-    "image": "images/diploma.jpg"
+    "image": "images/Certifications/Diploma.jpg"
   },
   {
     "id": 2,
-    "title": "Certificate Title Here",
-    "issuer": "Issuing Organization",
-    "date": "Month Year",
+    "title": "LPU Graduate Certification",
+    "issuer": "Lyceum of the Philippines University – Cavite",
+    "date": "2026",
     "category": "certification",
-    "image": "images/cert-1.jpg"
+    "image": "images/Certifications/LPU_Graduate_Certification.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Certiport Database Certification",
+    "issuer": "Certiport",
+    "date": "2025",
+    "category": "certification",
+    "image": "images/Certifications/Certiport_Database.jpg"
+  },
+  {
+    "id": 4,
+    "title": "EastWest CAIP Certification",
+    "issuer": "EastWest Bank",
+    "date": "2025",
+    "category": "certification",
+    "image": "images/Certifications/EastWest_CAIP.jpg"
   }
 ]
