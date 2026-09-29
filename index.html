@@ -200,7 +200,6 @@
 
 <div class="detail-overlay" id="detail-overlay">
   <div class="detail-inner">
-    <button class="detail-back" id="detail-back">← back to projects</button>
     <h2 class="detail-title" id="detail-title"></h2>
     <div class="carousel-wrap">
       <div class="carousel-track" id="carousel-track"></div>
@@ -229,7 +228,6 @@
 
 <div class="cert-overlay" id="cert-overlay">
   <div class="detail-inner">
-    <button class="detail-back" id="cert-back">← back to certificates</button>
     <h2 class="detail-title" id="cert-title"></h2>
     <div class="cert-img-wrap" id="cert-img-wrap"></div>
     <div class="cert-meta" id="cert-meta"></div>
@@ -414,12 +412,14 @@ function openDetail(card) {
   o.classList.add('open');
   o.scrollTop = 0;
   document.body.style.overflow = 'hidden';
+  history.pushState({ overlay: 'detail' }, '');
 }
 
-function closeDetail() {
+function closeDetail(fromPopstate) {
   document.getElementById('detail-overlay').classList.remove('open');
   document.getElementById('fs-overlay').classList.remove('open');
   document.body.style.overflow = '';
+  if (!fromPopstate) history.back();
 }
 
 document.getElementById('detail-back').addEventListener('click', closeDetail);
@@ -427,8 +427,8 @@ document.getElementById('detail-back').addEventListener('click', closeDetail);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (document.getElementById('fs-overlay').classList.contains('open')) closeFs();
-    else if (document.getElementById('cert-overlay').classList.contains('open')) closeCert();
-    else closeDetail();
+    else if (document.getElementById('cert-overlay').classList.contains('open')) closeCert(false);
+    else closeDetail(false);
   }
   if (document.getElementById('detail-overlay').classList.contains('open')) {
     if (e.key === 'ArrowLeft')  goTo(_cur - 1);
@@ -511,12 +511,14 @@ function openCert(card) {
   o.classList.add('open');
   o.scrollTop = 0;
   document.body.style.overflow = 'hidden';
+  history.pushState({ overlay: 'cert' }, '');
 }
 
-function closeCert() {
+function closeCert(fromPopstate) {
   document.getElementById('cert-overlay').classList.remove('open');
   document.getElementById('fs-overlay').classList.remove('open');
   document.body.style.overflow = '';
+  if (!fromPopstate) history.back();
 }
 
 document.getElementById('cert-back').addEventListener('click', closeCert);
