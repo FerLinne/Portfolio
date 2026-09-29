@@ -227,6 +227,16 @@
 </div>
 
 
+
+<div class="cert-overlay" id="cert-overlay">
+  <div class="detail-inner">
+    <button class="detail-back" id="cert-back">← back to certificates</button>
+    <h2 class="detail-title" id="cert-title"></h2>
+    <div class="cert-img-wrap" id="cert-img-wrap"></div>
+    <div class="cert-meta" id="cert-meta"></div>
+  </div>
+</div>
+
 <script>
 const BADGE = {
   dev:    { label: 'Dev',            cls: 'badge-dev'    },
@@ -515,14 +525,5 @@ document.getElementById('cert-back').addEventListener('click', closeCert);
 loadCertificates();
 </script>
 
-
-<div class="cert-overlay" id="cert-overlay">
-  <div class="detail-inner">
-    <button class="detail-back" id="cert-back">← back to certificates</button>
-    <h2 class="detail-title" id="cert-title"></h2>
-    <div class="cert-img-wrap" id="cert-img-wrap"></div>
-    <div class="cert-meta" id="cert-meta"></div>
-  </div>
-</div>
 </body>
 </html>
