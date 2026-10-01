@@ -413,22 +413,22 @@ function openDetail(card) {
   o.classList.add('open');
   o.scrollTop = 0;
   document.body.style.overflow = 'hidden';
-  history.pushState({ overlay: 'detail' }, '');
+  location.hash = 'project';
 }
 
-function closeDetail(fromPopstate) {
+function closeDetail() {
   document.getElementById('detail-overlay').classList.remove('open');
   document.getElementById('fs-overlay').classList.remove('open');
   document.body.style.overflow = '';
-  if (!fromPopstate) history.back();
+  location.hash = '';
 }
 
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (document.getElementById('fs-overlay').classList.contains('open')) closeFs();
-    else if (document.getElementById('cert-overlay').classList.contains('open')) closeCert(false);
-    else closeDetail(false);
+    else if (document.getElementById('cert-overlay').classList.contains('open')) closeCert();
+    else closeDetail();
   }
   if (document.getElementById('detail-overlay').classList.contains('open')) {
     if (e.key === 'ArrowLeft')  goTo(_cur - 1);
@@ -448,6 +448,13 @@ document.addEventListener('keydown', e => {
     sx = null;
   }, { passive: true });
 })();
+
+window.addEventListener('hashchange', function() {
+  if (!location.hash) {
+    if (document.getElementById('detail-overlay').classList.contains('open')) closeDetail();
+    if (document.getElementById('cert-overlay').classList.contains('open')) closeCert();
+  }
+});
 
 loadProjects();
 
@@ -511,14 +518,14 @@ function openCert(card) {
   o.classList.add('open');
   o.scrollTop = 0;
   document.body.style.overflow = 'hidden';
-  history.pushState({ overlay: 'cert' }, '');
+  location.hash = 'cert';
 }
 
-function closeCert(fromPopstate) {
+function closeCert() {
   document.getElementById('cert-overlay').classList.remove('open');
   document.getElementById('fs-overlay').classList.remove('open');
   document.body.style.overflow = '';
-  if (!fromPopstate) history.back();
+  location.hash = '';
 }
 
 
