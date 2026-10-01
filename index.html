@@ -108,6 +108,7 @@
         <div class="skill-items">
           <div class="skill-item"><span class="skill-dot"></span>HTML / CSS</div>
           <div class="skill-item"><span class="skill-dot"></span>Bootstrap</div>
+          <div class="skill-item"><span class="skill-dot"></span>PHP</div>
           <div class="skill-item"><span class="skill-dot"></span>JavaScript</div>
           <div class="skill-item"><span class="skill-dot"></span>Flutter / Dart</div>
         </div>
@@ -422,7 +423,6 @@ function closeDetail(fromPopstate) {
   if (!fromPopstate) history.back();
 }
 
-document.getElementById('detail-back').addEventListener('click', closeDetail);
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -521,7 +521,6 @@ function closeCert(fromPopstate) {
   if (!fromPopstate) history.back();
 }
 
-document.getElementById('cert-back').addEventListener('click', closeCert);
 
 loadCertificates();
 </script>
