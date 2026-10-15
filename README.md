@@ -1,187 +1,149 @@
-# Portfolio Website
+# Vince Wackie R. Espera — Portfolio
 
-A modern, responsive portfolio website with project showcase, admin panel, and image carousel. Fully editable through GitHub or the admin panel.
+Personal portfolio website for a Computer Science graduate with focus on data science, software development, and quality assurance. Built as a clean, minimal static site hosted on GitHub Pages.
 
-## Features
+**Live site:** https://FerLinne.github.io/Portfolio
 
-**Core Features:**
-- Responsive design (mobile-first approach with Bootstrap 5)
-- Project showcase with image carousel
-- Detailed project pages
-- Skills extraction from project tags
-- Smooth animations and transitions
-- Google Fonts (DM Sans + DM Mono)
-- Modern color palette and UI
+---
 
-**Admin Panel:**
-- Add/edit/delete projects
-- Multi-image upload per project
-- Profile photo management
-- All changes saved to browser localStorage
+## Tech Stack
 
-**Responsive Layout:**
-- Works on all devices (mobile, tablet, desktop)
-- Bootstrap 5 grid system
-- Optimized images and lazy loading
-- Touch-friendly controls
+- **HTML** — structure
+- **CSS** — custom styling, no frameworks (see `css/styles.css`)
+- **Vanilla JavaScript** — project/certificate loading, carousel, overlays
+- **Google Fonts** — DM Sans (body) + DM Mono (labels, tags, mono)
+- **GitHub Pages** — free static hosting
 
-## Using Your Portfolio
+---
 
-### Add or Edit Projects
+## Project Structure
 
-**Method 1: Direct GitHub Editing (Recommended)**
+```
+Portfolio/
+├── index.html              # Main portfolio page
+├── css/
+│   └── styles.css          # All styles
+├── projects.json           # Project data (edit this to add projects)
+├── certificates.json       # Certificates and credentials
+└── images/
+    ├── Profile.jpg         # Profile photo
+    ├── Projects/
+    │   ├── Harvestcrops/   # HarvestCrop screenshots
+    │   └── HerbaScan/      # HerbaScan screenshots
+    ├── Certifications/     # Certificate images
+    └── resume/
+        └── MyResume.pdf    # Downloadable resume
+```
 
-1. Go to your repository on GitHub
-2. Open `index.html`
-3. Click the pencil icon to edit
-4. Find the `const projectsData = [...]` section
-5. Add or edit projects in the array:
+---
 
-```javascript
+## How to Add a New Project
+
+Open `projects.json` on GitHub and add a new object to the array:
+
+```json
 {
-    id: 3,
-    name: "Your Project Name",
-    description: "Short description",
-    longDescription: "Longer detailed description",
-    tags: ["HTML", "CSS", "JavaScript"],
-    badge: "Dev",
-    badge2: "UI/UX",
-    link: "https://...",
-    images: ["images/project-1.png", "images/project-2.png"]
+  "id": 3,
+  "title": "Your Project Title",
+  "description": "Full description shown on the detail page. Include what it does and your specific role.",
+  "tags": ["Python", "MySQL", "Streamlit"],
+  "badge": "dev",
+  "badge2": "",
+  "link": "https://github.com/FerLinne/your-repo",
+  "status": "Completed",
+  "type": "Personal",
+  "year": "2025",
+  "images": [
+    "images/Projects/YourProject/screenshot1.jpg",
+    "images/Projects/YourProject/screenshot2.jpg"
+  ]
 }
 ```
 
-6. Commit changes → Website updates live in seconds!
+**Badge options:**
+| Value | Color | Use for |
+|-------|-------|---------|
+| `dev` | Green | Development projects |
+| `ds` | Purple | Data science projects |
+| `qa` | Orange | QA / testing work |
+| `design` | Pink | UI/UX or design work |
 
-### Upload Images
+**Type options:** `Academic`, `Personal`, `Freelance`
 
-1. Go to your GitHub repository
-2. Navigate to the `images/` folder
-3. Click "Add file" → "Upload files"
-4. Drag and drop images or select from your computer
-5. Commit the changes
-6. Update image paths in your project data
+After saving, commit the changes — the site updates within 1–2 minutes.
 
-### Update Profile Information
+---
 
-In `index.html`, find the hero section and edit:
+## How to Add a Certificate
+
+Open `certificates.json` on GitHub and add a new object:
+
+```json
+{
+  "id": 5,
+  "title": "Certificate Name",
+  "issuer": "Issuing Organization",
+  "date": "Month Year",
+  "category": "certification",
+  "image": "images/Certifications/cert-name.jpg"
+}
+```
+
+Then upload the certificate image to the `images/Certifications/` folder on GitHub.
+
+---
+
+## How to Update Your Profile Photo
+
+1. Upload your new photo to `images/` on GitHub
+2. In `index.html`, find this line and update the filename:
+```html
+<img src="images/Profile.jpg" alt="Vince Espera"/>
+```
+
+---
+
+## How to Update Your Resume
+
+1. Upload your new PDF to `images/resume/` on GitHub, named `MyResume.pdf`
+2. The download button in the portfolio will automatically serve the new file
+
+---
+
+## Sections
+
+| Section | Source |
+|---------|--------|
+| Hero (photo, bio, pills) | `index.html` — edit directly |
+| Projects | `projects.json` |
+| Education | `index.html` — edit directly |
+| Skills | `index.html` — edit directly |
+| Certificates | `certificates.json` |
+| Contact | `index.html` — edit directly |
+
+---
+
+## Contact Links
+
+To update contact links, open `index.html` and search for the contact section. Update the `href` values:
 
 ```html
-<h1 class="display-4 fw-bold mb-3">Your Name</h1>
-<p class="lead text-muted mb-4">Your Title | Your Tagline</p>
+<a href="mailto:your@email.com">...</a>
+<a href="https://github.com/yourhandle">...</a>
+<a href="https://linkedin.com/in/yourprofile">...</a>
 ```
 
-Update contact links:
+---
 
-```html
-<a href="mailto:your.email@example.com" class="contact-link">Email</a>
-<a href="https://github.com/yourprofile" target="_blank" class="contact-link">GitHub</a>
-```
+## Deployment
 
-## Customization
+This site is hosted on **GitHub Pages** from the `main` branch root folder. Any push to `main` automatically redeploys the site within 1–2 minutes.
 
-### Change Colors
+To check deployment status: **Repository → Actions tab**
 
-Edit the color variables in `css/style.css`:
+---
 
-```css
-:root {
-    --bg: #f9f8f5;        /* Background */
-    --text: #111111;      /* Text color */
-    --muted: #888888;     /* Secondary text */
-    --card: #ffffff;      /* Card background */
-    --border: #e5e3de;    /* Border color */
-    
-    --tag-ds: #ede9fe;       /* DS tag background */
-    --tag-dev: #e6fcf5;      /* Dev tag background */
-    --tag-qa: #fff4e6;       /* QA tag background */
-    --tag-design: #fce7f3;   /* Design tag background */
-}
-```
+## Author
 
-### Change Fonts
-
-Currently using **DM Sans** (body) and **DM Mono** (code/tags). To change:
-
-1. Edit the Google Fonts import in `index.html` `<head>`
-2. Update CSS font-family declarations in `css/style.css`
-
-### Add Dark Mode
-
-Add a toggle button and use CSS variables:
-
-```css
-body.dark-mode {
-    --bg: #1a1a1a;
-    --text: #ffffff;
-    --card: #2d2d2d;
-    /* etc */
-}
-```
-
-## Project Data Structure
-
-Each project object contains:
-
-```javascript
-{
-    id: 1,                  // Unique number
-    name: "Project Name",
-    description: "One-line summary",
-    longDescription: "Detailed description for detail page",
-    tags: ["Tag1", "Tag2"], // Technology tags
-    badge: "Dev",           // Category badge (optional)
-    badge2: "UI/UX",        // Secondary badge (optional)
-    link: "https://...",    // Project URL
-    images: ["images/..."]  // Array of image paths
-}
-```
-
-## Image Paths
-
-Use relative paths for local images:
-
-```
-"images/project-1.png"
-"images/profile.jpg"
-```
-
-Or external URLs:
-
-```
-"https://cdn.example.com/image.png"
-"https://raw.githubusercontent.com/USERNAME/REPO/main/images/project-1.png"
-```
-
-## Browser Support
-
-- Chrome/Chromium (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Performance Tips
-
-1. **Optimize Images**: Compress images before uploading (use TinyPNG, ImageOptim)
-2. **Lazy Loading**: Images lazy load automatically with `loading="lazy"`
-3. **CDN**: Bootstrap and Google Fonts loaded from CDN
-4. **Caching**: GitHub Pages automatically caches assets
-
-## Troubleshooting
-
-**Images not loading?**
-- Verify image paths are correct relative to repository
-- Use lowercase filenames without spaces
-- Check that images are in `images/` folder
-- Use GitHub raw links if relative paths don't work
-
-**Admin panel not working?**
-- Clear browser localStorage: `localStorage.clear()` in console
-- Reload page
-- Make sure JavaScript is enabled
-
-**Carousel not working?**
-- Check browser console (F12) for JavaScript errors
-- Verify image paths exist
-- Try different browser
+**Vince Wackie R. Espera**
+[github.com/FerLinne](https://github.com/FerLinne) · [LinkedIn](https://www.linkedin.com/in/vince-wackie-espera-24503b363/)
